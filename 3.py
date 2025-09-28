@@ -46,3 +46,18 @@ def task5():
     for num in fibonacci(5):
         print(num, end=" ")
     print()
+
+def task6():
+    """6. Финансовый калькулятор"""
+    try:
+        P = Decimal(input("Начальная сумма (руб): "))
+        r = Decimal(input("Процентная ставка (%): "))
+        t = Decimal(input("Срок (лет): "))
+        
+        S = P * (1 + r / (12 * 100)) ** (12 * t)
+        profit = S - P
+        
+        print(f"Итоговая сумма: {S:.2f} руб")
+        print(f"Прибыль: {profit:.2f} руб")
+    except:
+        print("Ошибка ввода!")
