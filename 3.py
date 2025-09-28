@@ -71,3 +71,44 @@ def task7():
     print(f"3/4 - 5/6 = {a - b}")
     print(f"3/4 × 5/6 = {a * b}")
     print(f"3/4 ÷ 5/6 = {a / b}")
+
+def task8():
+    """8. Текущая дата и время"""
+    now = datetime.now()
+    print("Текущая дата и время:", now)
+    print("Только дата:", now.date())
+    print("Только время:", now.time().strftime("%H:%M:%S"))
+
+def task9():
+    """9. Разница дат"""
+    try:
+        birthday_input = input("Ваш день рождения (ГГГГ-ММ-ДД): ")
+        birthday = datetime.strptime(birthday_input, "%Y-%m-%d").date()
+        today = date.today()
+        
+        days_passed = (today - birthday).days
+        
+        next_birthday = date(today.year, birthday.month, birthday.day)
+        if next_birthday < today: 
+            next_birthday = date(today.year + 1, birthday.month, birthday.day)
+        
+        days_to_next = (next_birthday - today).days
+
+        if days_to_next == 0:
+            print(f"С Днём Рождения!")
+            print(f"Вам исполнилось: {days_passed // 365} лет")
+        else:
+            print(f"Дней прошло с рождения: {days_passed}")
+            print(f"Дней до следующего дня рождения: {days_to_next}")
+            
+    except ValueError:
+        print("Ошибка формата даты! Используйте формат ГГГГ-ММ-ДД (например: 1990-05-15)")
+
+def task10():
+    """10. Форматирование даты"""
+    now = datetime.now()
+    months = ["января", "февраля", "марта", "апреля", "мая", "июня",
+              "июля", "августа", "сентября", "октября", "ноября", "декабря"]
+    
+    result = f"Сегодня {now.day} {months[now.month-1]} {now.year} года, время: {now.hour:02d}:{now.minute:02d}" # [now.month-1]} так как в списке счёт начинается с нуля (0), а не с единицы (1)
+    print(result)
