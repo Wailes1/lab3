@@ -6,7 +6,7 @@ def task1():
     """1. List comprehension (простое преобразование)"""
     squares = [x**2 for x in range(1, 11)]
     print("Квадраты чисел от 1 до 10:", squares)
-    
+
 def task2():
     """2. List comprehension (фильтрация)"""
     evens = [x for x in range(1, 20) if x % 2 == 0]
@@ -17,7 +17,7 @@ def task3():
     words = ["python", "Java", "c++", "Rust", "go"]
     result = [word.upper() for word in words if len(word) > 3]
     print("Слова в верхнем регистре (длина > 3):", result)
-
+    
 class Countdown:
     def __init__(self, n):
         self.n = n
@@ -112,3 +112,39 @@ def task10():
     
     result = f"Сегодня {now.day} {months[now.month-1]} {now.year} года, время: {now.hour:02d}:{now.minute:02d}" # [now.month-1]} так как в списке счёт начинается с нуля (0), а не с единицы (1)
     print(result)
+
+def main():
+    tasks = {
+        '1': ("List comprehension (квадраты)", task1),
+        '2': ("List comprehension (четные)", task2),
+        '3': ("List comprehension (строки)", task3),
+        '4': ("Итератор Countdown", task4),
+        '5': ("Генератор Фибоначчи", task5),
+        '6': ("Финансовый калькулятор", task6),
+        '7': ("Операции с дробями", task7),
+        '8': ("Текущая дата и время", task8),
+        '9': ("Разница дат", task9),
+        '10': ("Форматирование даты", task10),
+        '0': ("Выход", exit)
+    }
+    
+    while True:
+        print("="*50)
+        print("Лабораторная работа 3")
+        print("="*50)
+        
+        for key in tasks:
+            task_name = tasks[key][0]  # Название задания
+            print(f"{key}. {task_name}")
+        
+        choice = input("\nВыберите задание (0-10): ")
+        
+        if choice in tasks:
+            print(f"\n--- {tasks[choice][0]} ---")
+            tasks[choice][1]()
+            input("\nНажмите Enter для продолжения...")
+        else:
+            print("Неверный выбор!")
+
+if __name__ == "__main__":
+    main()
