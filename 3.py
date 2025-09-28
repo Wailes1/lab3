@@ -61,3 +61,13 @@ def task6():
         print(f"Прибыль: {profit:.2f} руб")
     except:
         print("Ошибка ввода!")
+
+def task7():
+    """7. Работа с дробями"""
+    a = Fraction(3, 4)
+    b = Fraction(5, 6)
+    
+    print(f"3/4 + 5/6 = {a + b}")
+    print(f"3/4 - 5/6 = {a - b}")
+    print(f"3/4 × 5/6 = {a * b}")
+    print(f"3/4 ÷ 5/6 = {a / b}")
