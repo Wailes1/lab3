@@ -17,3 +17,17 @@ def task3():
     words = ["python", "Java", "c++", "Rust", "go"]
     result = [word.upper() for word in words if len(word) > 3]
     print("Слова в верхнем регистре (длина > 3):", result)
+
+class Countdown:
+    def __init__(self, n):
+        self.n = n
+    
+    def __iter__(self):
+        return iter(range(self.n, 0, -1))
+
+def task4():
+    """4. Демонстрация итератора"""
+    print("Countdown(5):", end=" ")
+    for x in Countdown(5):
+        print(x, end=" ")
+    print()
