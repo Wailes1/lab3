@@ -31,3 +31,18 @@ def task4():
     for x in Countdown(5):
         print(x, end=" ")
     print()
+
+def fibonacci(n):
+    """5. Собственный генератор"""
+    x1 = 0
+    x2 = 1
+    for _ in range(n):
+        yield x1
+        x1, x2 = x2, x1 + x2
+
+def task5():
+    """5. Демонстрация генератора"""
+    print("Первые 5 чисел Фибоначчи:", end=" ")
+    for num in fibonacci(5):
+        print(num, end=" ")
+    print()
