@@ -82,27 +82,41 @@ def task8():
 def task9():
     """9. Разница дат"""
     try:
-        birthday_input = input("Ваш день рождения (ГГГГ-ММ-ДД): ")
-        birthday = datetime.strptime(birthday_input, "%Y-%m-%d").date()
+        print("=" * 50)
+        print("           КАЛЬКУЛЯТОР ДНЕЙ РОЖДЕНИЯ")
+        print("=" * 50)
+        
+        birthday_input = input("Введите вашу дату рождения в формате ГГГГ-ММ-ДД: ")
+        denrozdenia = datetime.strptime(birthday_input, "%Y-%m-%d").date()
         today = date.today()
         
-        days_passed = (today - birthday).days
+        # Вычисляем прожитые дни
+        days_lived = (today - denrozdenia).days
+        years_old = days_lived // 365
         
-        next_birthday = date(today.year, birthday.month, birthday.day)
+        # Вычисляем дни до следующего дня рождения
+        next_birthday = date(today.year, denrozdenia.month, denrozdenia.day)
         if next_birthday < today: 
-            next_birthday = date(today.year + 1, birthday.month, birthday.day)
+            next_birthday = date(today.year + 1, denrozdenia.month, denrozdenia.day)
         
-        days_to_next = (next_birthday - today).days
+        days_until_next = (next_birthday - today).days
 
-        if days_to_next == 0:
-            print(f"С Днём Рождения!")
-            print(f"Вам исполнилось: {days_passed // 365} лет")
+        print("\n" + "─" * 50)
+        
+        if days_until_next == 0:
+            print("ПОЗДРАВЛЯЕМ! СЕГОДНЯ ВАШ ДЕНЬ РОЖДЕНИЯ!")
         else:
-            print(f"Дней прошло с рождения: {days_passed}")
-            print(f"Дней до следующего дня рождения: {days_to_next}")
+            print(f"Вы прожили: {days_lived:,} дней".replace(',', ' '))
+            print(f"Ваш возраст: {years_old} лет")
+            print(f"До следующего дня рождения: {days_until_next} дней")
+        
+        print("─" * 50)
+        print()
             
     except ValueError:
-        print("Ошибка формата даты! Используйте формат ГГГГ-ММ-ДД (например: 1990-05-15)")
+        print("\nОшибка! Неверный формат даты.")
+        print("ℹПожалуйста, используйте формат ГГГГ-ММ-ДД")
+        print("Например: 1990-05-15")
 
 def task10():
     """10. Форматирование даты"""
